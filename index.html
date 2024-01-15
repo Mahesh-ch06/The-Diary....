@@ -75,11 +75,41 @@
 
         // Your logic to handle the form submission goes here
         alert("Form submitted!"); // Replace this with your actual logic
+
+        // Example: Call a function to handle saving the entry
+        saveEntryLocally();
       }
 
       function savePage() {
         // Your save page logic goes here
         alert("Page saved!"); // You can replace this with your actual save logic
+      }
+
+      function saveEntryLocally() {
+        const entryTitle = document.getElementById("entry-title").value;
+        const entryContent = document.getElementById("entry").value;
+
+        // Create a Blob containing the entry content
+        const blob = new Blob([`Entry Title: ${entryTitle}\n\n${entryContent}`], { type: "text/plain" });
+
+        // Create a download link
+        const a = document.createElement("a");
+
+        // Customize the filename based on the entry title
+        const filename = entryTitle ? entryTitle.replace(/ /g, "_") + "_entry.txt" : "untitled_entry.txt";
+        a.download = filename;
+
+        a.href = URL.createObjectURL(blob);
+
+        // Append the link to the document and trigger the download
+        document.body.appendChild(a);
+        a.click();
+
+        // Remove the link from the document
+        document.body.removeChild(a);
+
+        // Release the URL object
+        URL.revokeObjectURL(a.href);
       }
     </script>
 
