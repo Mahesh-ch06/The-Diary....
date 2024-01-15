@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,12 +22,20 @@
   <body>
     <header><h1 class="title">My Personal Diary</h1></header>
 
+    <!-- Developer Info and Link Section -->
+    <section class="section developer-info">
+      <div class="container">
+        <p>Developed by Mahesh06</p>
+        <p><a href="https://mahesh06.odoo.com/" target="_blank">Developer's Website</a></p>
+      </div>
+    </section>
+
     <!-- Journal Entry Section -->
     <section class="section journal-section">
       <div class="container">
         <div class="container-row container-row-journal">
           <div class="container-item container-item-journal">
-            <form id="entryForm" action="">
+            <form id="entryForm" onsubmit="submitForm(event)">
               <label for="entry-title" class="journal-label">Entry Title</label>
               <input
                 type="text"
@@ -57,20 +64,25 @@
         <div class="container-row entryResultRow"></div>
       </div>
     </section>
+
     <!-- Add this button after the submit button -->
-<button class="btn-main save-page-btn" onclick="savePage()">Save Page</button>
+    <button class="btn-main save-page-btn" onclick="savePage()">Save Page</button>
 
-<!-- Add this script at the end of your HTML file, before the </body> tag -->
-<script>
-  function savePage() {
-    // Your save page logic goes here
-    alert("Page saved!"); // You can replace this with your actual save logic
-  }
-</script>
+    <!-- Add this script at the end of your HTML file, before the </body> tag -->
+    <script>
+      function submitForm(event) {
+        event.preventDefault(); // Prevents the default form submission behavior
 
+        // Your logic to handle the form submission goes here
+        alert("Form submitted!"); // Replace this with your actual logic
+      }
+
+      function savePage() {
+        // Your save page logic goes here
+        alert("Page saved!"); // You can replace this with your actual save logic
+      }
+    </script>
 
     <script src="index.js"></script>
-    
   </body>
 </html>
-
